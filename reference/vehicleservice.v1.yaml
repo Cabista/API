@@ -109,7 +109,13 @@ paths:
           in: query
           name: businessID
           required: true
-      requestBody: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+        description: ''
 components:
   schemas:
     VehicleInformation:
@@ -208,3 +214,4 @@ components:
   securitySchemes:
     openIDOne:
       type: openIdConnect
+      openIdConnectUrl: 'localhost:9000'

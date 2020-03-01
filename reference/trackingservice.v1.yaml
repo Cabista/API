@@ -63,3 +63,4 @@ components:
   securitySchemes:
     openIDOne:
       type: openIdConnect
+      openIdConnectUrl: 'localhost:9000'
