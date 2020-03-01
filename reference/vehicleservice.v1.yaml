@@ -155,13 +155,16 @@ components:
           $ref: '#/components/schemas/VehicleExpiry'
         businessID:
           type: string
-        creationDate:
-          type: string
-          format: date
         driverID:
           type: string
         isActive:
           type: boolean
+        CreatedAt:
+          type: string
+        UpdatedAt:
+          type: string
+        DeletedAt:
+          type: string
     VehicleType:
       title: VehicleType
       type: object
