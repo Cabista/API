@@ -1,0 +1,210 @@
+openapi: 3.0.0
+info:
+  title: VehicleService
+  version: '1.0'
+  contact:
+    name: John Gray
+    url: 'https://github.com/Cabista/API/issues'
+    email: 'johnfg2610"gmail.com'
+servers: []
+paths:
+  '/vehicle/{ID}':
+    get:
+      summary: Get vehicle by id
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vehicle'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      operationId: get-vehicle
+      description: Gets a vehicle by id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VehicleForm'
+          application/xml:
+            schema:
+              type: object
+              properties: {}
+        description: ''
+      security:
+        - openIDOne: []
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: businessID
+          required: true
+    parameters:
+      - schema:
+          type: string
+        name: ID
+        in: path
+        required: true
+  /vehicle/new:
+    post:
+      summary: Create new vehicle
+      operationId: post-vehicle-new
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vehicle'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VehicleForm'
+      security:
+        - openIDOne: []
+      description: Creates a new Vehicle on the resource
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: businessID
+          description: |
+            The business this vehicle belongs too
+  /vehicle/all:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Vehicle'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: get-vehicle-all
+      security:
+        - openIDOne: []
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: businessID
+          required: true
+      requestBody: {}
+components:
+  schemas:
+    VehicleInformation:
+      title: VehicleInformation
+      type: object
+      description: The information relevant to this specific vehicle
+      properties:
+        make:
+          type: string
+        model:
+          type: string
+        color:
+          type: string
+        yearOfManufacture:
+          type: integer
+        passengerSize:
+          type: integer
+        CO2Emissions:
+          type: number
+        registration:
+          type: string
+    Vehicle:
+      title: Vehicle
+      type: object
+      description: Represents a vehicle
+      x-examples: {}
+      properties:
+        id:
+          type: string
+        vehicleInformation:
+          $ref: '#/components/schemas/VehicleType'
+        plateNumber:
+          type: number
+        millage:
+          type: integer
+        vehicleExpiry:
+          $ref: '#/components/schemas/VehicleExpiry'
+        businessID:
+          type: string
+        creationDate:
+          type: string
+          format: date
+        driverID:
+          type: string
+        isActive:
+          type: boolean
+    VehicleType:
+      title: VehicleType
+      type: object
+      properties:
+        id:
+          type: string
+        make:
+          type: string
+        model:
+          type: string
+        color:
+          type: string
+        yearOfManufacture:
+          type: integer
+        passengerCount:
+          type: string
+        CO2Emissions:
+          type: string
+          description: CO2Emissions per gram per mile
+    VehicleForm:
+      title: VehicleForm
+      type: object
+      description: Represents a vehicle about to be created
+      properties:
+        plateNumber:
+          type: integer
+        millage:
+          type: integer
+        vehicleExpiry:
+          $ref: '#/components/schemas/VehicleExpiry'
+        creationDate:
+          type: string
+          format: date
+        vehicleInformation:
+          $ref: '#/components/schemas/VehicleInformation'
+        driverID:
+          type: string
+    VehicleExpiry:
+      title: VehicleExpiry
+      type: object
+      properties:
+        MOTExpiry:
+          type: string
+        plateExpiry:
+          type: string
+        insuranceExpiry:
+          type: string
+        roadTaxExpiry:
+          type: string
+  securitySchemes:
+    openIDOne:
+      type: openIdConnect
