@@ -19,8 +19,7 @@ paths:
         '403':
           description: Forbidden
       operationId: get-tracking-new
-      security:
-        - openIDOne: []
+      security: []
       requestBody:
         content:
           application/json:
@@ -60,7 +59,4 @@ components:
       properties:
         location:
           $ref: '#/components/schemas/Location'
-  securitySchemes:
-    openIDOne:
-      type: openIdConnect
-      openIdConnectUrl: 'localhost:9000'
+  securitySchemes: {}
