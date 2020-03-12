@@ -303,6 +303,8 @@ components:
       title: VehicleType
       type: object
       description: The specification of a vehicle
+      x-tags:
+        - Vehicle type
       properties:
         id:
           type: string
@@ -337,18 +339,29 @@ components:
           default: 3
           format: int32
           description: The amount of doors this vehicle has
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        deletedAt:
+          type: string
+          format: date-time
       required:
         - id
         - make
         - model
         - yearOfManufacture
-      x-tags:
-        - Vehicle type
+        - createdAt
+        - updatedAt
     Vehicle:
       title: Vehicle
       type: object
       description: Represents a vehicle in the system
       x-examples: {}
+      x-tags:
+        - Vehicle
       properties:
         id:
           type: string
@@ -394,6 +407,15 @@ components:
           type: string
           example: Blue
           description: The color of the vehicle
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        deletedAt:
+          type: string
+          format: date-time
       required:
         - id
         - driverId
@@ -402,8 +424,8 @@ components:
         - plateNumber
         - millage
         - color
-      x-tags:
-        - Vehicle
+        - createdAt
+        - updatedAt
     VehicleForm:
       title: VehicleForm
       type: object
