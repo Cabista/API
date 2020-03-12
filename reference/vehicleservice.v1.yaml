@@ -306,10 +306,8 @@ components:
       x-tags:
         - Vehicle type
       properties:
-        id:
+        ID:
           type: string
-          format: uuid
-          example: 4406de91-aacc-4ffa-98bf-b02eb2a30e45
           description: An identifier used to refrence this vehicle
         make:
           type: string
@@ -349,7 +347,7 @@ components:
           type: string
           format: date-time
       required:
-        - id
+        - ID
         - make
         - model
         - yearOfManufacture
@@ -363,21 +361,17 @@ components:
       x-tags:
         - Vehicle
       properties:
-        id:
+        ID:
           type: string
           description: A identifier used to represent this vehicle
-          format: uuid
-        driverId:
+        driverID:
           type: string
-          format: uuid
           description: The driver who has been issued this vehicle
-        vehicleTypeId:
+        vehicleTypeID:
           type: string
-          format: uuid
           description: A refrence number to the type of vehicle this represents
-        businessId:
+        businessID:
           type: string
-          format: uuid
           description: The id of the business this belongs to
         plateNumber:
           type: integer
@@ -417,10 +411,10 @@ components:
           type: string
           format: date-time
       required:
-        - id
-        - driverId
-        - vehicleTypeId
-        - businessId
+        - ID
+        - driverID
+        - vehicleTypeID
+        - businessID
         - plateNumber
         - millage
         - color
@@ -436,17 +430,15 @@ components:
           vehicleTypeId: ec907f5a-9574-4543-b161-0686f390fa64
           plateNumber: 4823
           color: Blue
+      x-tags:
+        - Vehicle
       properties:
-        driverId:
+        driverID:
           type: string
           description: The driver who has been issued this vehicle
-          format: uuid
-          example: f04e5c3a-08a1-40d4-92e5-38b7264cf18b
-        vehicleTypeId:
+        vehicleTypeID:
           type: string
           description: A refrence number to the type of vehicle this represents
-          format: uuid
-          example: b41272fd-388c-4034-aa30-92a7b144e658
         plateNumber:
           type: integer
           description: The platenumber of this vehicle
@@ -479,12 +471,10 @@ components:
           description: The color of the vehicle
           example: Blue
       required:
-        - driverId
-        - vehicleTypeId
+        - driverID
+        - vehicleTypeID
         - plateNumber
         - color
-      x-tags:
-        - Vehicle
     VehicleTypeForm:
       title: VehicleType
       type: object
@@ -543,11 +533,9 @@ components:
       x-tags:
         - Vehicle
       properties:
-        driverId:
+        driverID:
           type: string
           description: The driver who has been issued this vehicle
-          format: uuid
-          example: f04e5c3a-08a1-40d4-92e5-38b7264cf18b
         plateNumber:
           type: integer
           description: The platenumber of this vehicle
